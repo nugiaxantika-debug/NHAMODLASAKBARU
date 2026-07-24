@@ -834,6 +834,7 @@ export class WhatsAppBot {
     const hewanCommands = ['.hewanmenu', 'hewanmenu', '.catcanvas', 'catcanvas', '.dogcanvas', 'dogcanvas', '.foxcanvas', 'foxcanvas', '.wolfcanvas', 'wolfcanvas', '.lioncanvas', 'lioncanvas', '.tigercanvas', 'tigercanvas', '.pandacanvas', 'pandacanvas', '.bunnycanvas', 'bunnycanvas', '.owlcanvas', 'owlcanvas', '.eaglecanvas', 'eaglecanvas', '.capycanvas', 'capycanvas', '.penguincanvas', 'penguincanvas'];
     const bokepCommands = ['.bokepmenu', 'bokepmenu', '.vidbokepindonesia', 'vidbokepindonesia', '.vidbokepmalaysia', 'vidbokepmalaysia', '.vidbokepjepang', 'vidbokepjepang', '.vidbokepchina', 'vidbokepchina', '.vidbokepamerika', 'vidbokepamerika'];
     const aiCommands = ['.aimenu', 'aimenu', '.midjourney', 'midjourney', '.grok', 'grok', '.llama', 'llama', '.imgai', 'imgai', '.bingimg', 'bingimg', '.nanobananaai', 'nanobananaai', '.hapusbgfoto', 'hapusbgfoto'];
+    const cdramaCommands = ['.cdramamenu', 'cdramamenu', '.dramaromantis', 'dramaromantis', '.dramakomedi', 'dramakomedi', '.dramamisteri', 'dramamisteri', '.dramakerajaan', 'dramakerajaan', '.dramakeluarga', 'dramakeluarga', '.dramaperang', 'dramaperang', '.dramaxianxia', 'dramaxianxia', '.dramakriminal', 'dramakriminal', '.dramafantasi', 'dramafantasi'];
     
     if (ownerCommands.includes(requestedCmd) && !isOwner) {
       this.broadcastState(`Blocked non-owner from using ${requestedCmd}`);
@@ -858,7 +859,7 @@ export class WhatsAppBot {
 
     if (isMenuCmd) {
       const botName = this.customBotName || this.sock.user?.name || "Wabot Pro";
-      const totalFitur = ownerCommands.length + groupCommands.length + funCommands.length + margaCommands.length + videoCommands.length + stickerCommands.length + downloadCommands.length + kristenCommands.length + islamCommands.length + cecanCommands.length + primbonCommands.length + animeCommands.length + sertifikatCommands.length + rpgCommands.length + storeCommands.length + beritaCommands.length + sulapCommands.length + hentaiCommands.length + hantuCommands.length + posterCommands.length + coganCommands.length + toolsCommands.length + deviceCommands.length + tiketCommands.length + karyawanCommands.length + hewanCommands.length + bokepCommands.length + aiCommands.length;
+      const totalFitur = ownerCommands.length + groupCommands.length + funCommands.length + margaCommands.length + videoCommands.length + stickerCommands.length + downloadCommands.length + kristenCommands.length + islamCommands.length + cecanCommands.length + primbonCommands.length + animeCommands.length + sertifikatCommands.length + rpgCommands.length + storeCommands.length + beritaCommands.length + sulapCommands.length + hentaiCommands.length + hantuCommands.length + posterCommands.length + coganCommands.length + toolsCommands.length + deviceCommands.length + tiketCommands.length + karyawanCommands.length + hewanCommands.length + bokepCommands.length + aiCommands.length + cdramaCommands.length;
       
       const dateNow = new Date();
       const dateOptions: Intl.DateTimeFormatOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Asia/Jakarta' };
@@ -911,6 +912,7 @@ ${readmore}
 │ .tiketmenu
 │ .karyawanmenu
 │ .hewanmenu
+│ .cdramamenu
 
 Ketik menu yang kamu inginkan.`;
       
@@ -2131,7 +2133,7 @@ Ketik menu yang kamu inginkan.`;
       this.broadcastState(`Deleted custom bot name`);
       await this.sock.sendMessage(jid, { text: `✅ Berhasil mereset nama bot ke default.` }, { quoted: msg });
     } else if (body === ".totalfitur" || body === "totalfitur") {
-      const totalFitur = ownerCommands.length + groupCommands.length + funCommands.length + margaCommands.length + videoCommands.length + stickerCommands.length + downloadCommands.length + kristenCommands.length + islamCommands.length + cecanCommands.length + primbonCommands.length + animeCommands.length + sertifikatCommands.length + rpgCommands.length + storeCommands.length + beritaCommands.length + sulapCommands.length + hentaiCommands.length + hantuCommands.length + posterCommands.length + coganCommands.length + toolsCommands.length + deviceCommands.length + tiketCommands.length + karyawanCommands.length + hewanCommands.length + bokepCommands.length + aiCommands.length;
+      const totalFitur = ownerCommands.length + groupCommands.length + funCommands.length + margaCommands.length + videoCommands.length + stickerCommands.length + downloadCommands.length + kristenCommands.length + islamCommands.length + cecanCommands.length + primbonCommands.length + animeCommands.length + sertifikatCommands.length + rpgCommands.length + storeCommands.length + beritaCommands.length + sulapCommands.length + hentaiCommands.length + hantuCommands.length + posterCommands.length + coganCommands.length + toolsCommands.length + deviceCommands.length + tiketCommands.length + karyawanCommands.length + hewanCommands.length + bokepCommands.length + aiCommands.length + cdramaCommands.length;
       await this.sock.sendMessage(jid, { text: `⚠️ *Total Fitur Bot* : ${totalFitur} Fitur` }, { quoted: msg });
     } else if (body.startsWith(".addprefix") || body.startsWith("addprefix")) {
       const text = messageContent.replace(/^\.?addprefix\s*/i, "").trim();
@@ -2322,7 +2324,8 @@ Ketik menu yang kamu inginkan.`;
                body.startsWith(".vidsexyjepang") || body.startsWith("vidsexyjepang") ||
                body.startsWith(".vidsexyindonesia") || body.startsWith("vidsexyindonesia") ||
                body.startsWith(".vidsexymalaysia") || body.startsWith("vidsexymalaysia") ||
-               body.startsWith(".vidsexychina") || body.startsWith("vidsexychina")) {
+               body.startsWith(".vidsexychina") || body.startsWith("vidsexychina") ||
+               cdramaCommands.includes(body.split(" ")[0].toLowerCase()) && body.split(" ")[0].toLowerCase() !== ".cdramamenu" && body.split(" ")[0].toLowerCase() !== "cdramamenu") {
       const targetQuery = body.split(" ")[0].replace(".", "");
       let searchQuery = targetQuery.replace("tiktok", "");
       if (targetQuery === "videosexybikini") {
@@ -2340,6 +2343,9 @@ Ketik menu yang kamu inginkan.`;
       } else if (targetQuery === "vidsexychina") {
         const hotQueries = ["douyin bikini", "chinese girl bikini", "cewek china bikini", "bikini china"];
         searchQuery = hotQueries[Math.floor(Math.random() * hotQueries.length)];
+      } else if (targetQuery.startsWith("drama")) {
+        const genre = targetQuery.replace("drama", "");
+        searchQuery = `cdrama ${genre} klip pendek sub indo`;
       }
       await this.sock.sendMessage(jid, { text: `⏳ *Permintaan Video ${targetQuery}*\n\nSedang mencari referensi video... Mohon tunggu sebentar.` }, { quoted: msg });
       
@@ -3214,6 +3220,10 @@ Link referensi: ${randomItem.link}` }, { quoted: msg });
            await this.sock.sendMessage(jid, { text: "❌ *Gagal mengambil poster.*" }, { quoted: msg });
         }
       }
+    } else if (body === "cdramamenu" || body === ".cdramamenu" || body === "cdrama menu" || body === ".cdrama menu") {
+      const cdramaText = `🎭 *C-Drama Menu*\n\n│ .dramaromantis\n│ .dramakomedi\n│ .dramamisteri\n│ .dramakerajaan\n│ .dramakeluarga\n│ .dramaperang\n│ .dramaxianxia\n│ .dramakriminal\n│ .dramafantasi`;
+      await this.sock.sendMessage(jid, { text: cdramaText }, { quoted: msg });
+      this.broadcastState(`Responded to cdramamenu command`);
     } else if (body === "hewanmenu" || body === ".hewanmenu" || body === "hewan menu" || body === ".hewan menu") {
       const hewanText = `🐾 *Hewan Menu*\n\n│ .catcanvas\n│ .dogcanvas\n│ .foxcanvas\n│ .wolfcanvas\n│ .lioncanvas\n│ .tigercanvas\n│ .pandacanvas\n│ .bunnycanvas\n│ .owlcanvas\n│ .eaglecanvas\n│ .capycanvas\n│ .penguincanvas`;
       await this.sock.sendMessage(jid, { text: hewanText }, { quoted: msg });

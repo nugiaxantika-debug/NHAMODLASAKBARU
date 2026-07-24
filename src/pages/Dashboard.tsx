@@ -2151,6 +2151,13 @@ export default function Dashboard() {
                     <p className="text-xs text-neutral-400 mt-1">Aneka permainan RPG (kerja, mancing, berkebun, upgrade, shop, dll).</p>
                   </div>
                 </div>
+                <div className="bg-neutral-950 border border-neutral-800 p-4 rounded-xl flex items-start gap-4">
+                  <div className="bg-teal-500/20 p-2 rounded-lg text-teal-400 mt-1"><Video className="w-5 h-5" /></div>
+                  <div>
+                    <h3 className="font-semibold text-white text-sm">.cdramamenu</h3>
+                    <p className="text-xs text-neutral-400 mt-1">Kumpulan short drama china (romantis, komedi, misteri, dll).</p>
+                  </div>
+                </div>
               </div>
             </div>
 
